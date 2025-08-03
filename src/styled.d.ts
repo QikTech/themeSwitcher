@@ -24,7 +24,8 @@ declare module 'styled-components' {
       padding: string;
       margin: string;
     };
-    layout: {
+    
+  layout: {
       type: 'minimal' | 'sidebar' | 'card-grid';
       headerHeight: string;
       sidebarWidth?: string;

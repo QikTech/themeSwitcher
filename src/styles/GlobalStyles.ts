@@ -1,7 +1,13 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap');
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
   body {
     background-color: ${({ theme }) => theme.colors.background};

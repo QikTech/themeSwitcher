@@ -5,11 +5,10 @@ export const theme3: DefaultTheme = {
     background: '#f9f9f9',
     text: '#555',
     primary: '#1f1010ff',
-    secondary: '#72abb7ff',
+    secondary: '#e3f0e8ff',
     border: '#f5f5f5',
   },
   fonts: {
-    // Use Poppins for the main font, Pacifico for headings
      main: 'Calibri, sans-serif',
     heading: 'Calibri, sans-serif',
     size: {
@@ -18,16 +17,22 @@ export const theme3: DefaultTheme = {
       h2: '2.5em',
     },
   },
+
+  //heafer spacing
   spacing: {
     container: '0 2rem',
     gap: '2rem',
     padding: '2rem',
     margin: '2rem 0',
   },
+
+
   layout: {
     type: 'card-grid',
     headerHeight: '70px',
   },
+
+  // click me button
   components: {
     button: {
       padding: '15px 30px',

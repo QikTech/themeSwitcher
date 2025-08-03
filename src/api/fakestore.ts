@@ -14,6 +14,7 @@ export interface Product {
 }
 
 export const getProducts = async (): Promise<Product[]> => {
-  const response = await api.get('/products?limit=5');
+  // We've removed '?limit=5' to fetch all products
+  const response = await api.get('/products');
   return response.data;
 };

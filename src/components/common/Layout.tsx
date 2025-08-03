@@ -10,7 +10,7 @@ const AppContainer = styled.div<{ layoutType: string }>`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
 `;
 
 const ContentWrapper = styled.div<{ layoutType: string }>`
@@ -21,18 +21,29 @@ const ContentWrapper = styled.div<{ layoutType: string }>`
   padding-top: ${({ theme }) => theme.layout.headerHeight};
   padding-bottom: 70px; 
   
+  /* Default desktop styles */
   @media (min-width: 768px) {
-    /* Default desktop padding */
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
     padding: 2rem;
     padding-top: ${({ theme }) => theme.layout.headerHeight};
     padding-bottom: 2rem;
     
     ${({ layoutType, theme }) => layoutType === 'sidebar' && css`
+      max-width: none;
       margin-left: ${theme.layout.sidebarWidth};
-      /* Override padding for sidebar layout */
-      padding-top: 0rem;
-      padding-left: 4rem;
-      padding-right: 2rem;
+      padding-top: ${({ theme }) => theme.layout.headerHeight};
+      padding-left: 2rem;
+      padding-right: 2rem; // FIX: Ensure right padding is set
+    `}
+    
+    ${({ layoutType }) => layoutType === 'card-grid' && css`
+      max-width: none;
+      margin: 0;
+      padding-left: 2rem; // FIX: Ensure left padding is set
+      padding-right: 2rem; // FIX: Ensure right padding is set
+      padding-top: ${({ theme }) => theme.layout.headerHeight}; // FIX: Ensure top padding is set
     `}
   }
 `;
