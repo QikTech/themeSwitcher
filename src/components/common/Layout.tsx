@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { Outlet, Link } from 'react-router-dom';
 import Header from './Header';
@@ -105,7 +104,7 @@ const Layout = () => {
         <Sidebar>
           <SidebarHeader>ThemeApp</SidebarHeader>
           <SidebarNav>
-            <SidebarLink to="/">Home</SidebarLink>
+            <SidebarLink to="/home">Home</SidebarLink>
             <SidebarLink to="/about">About</SidebarLink>
             <SidebarLink to="/contact">Contact</SidebarLink>
           </SidebarNav>

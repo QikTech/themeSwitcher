@@ -1,5 +1,4 @@
-// src/components/common/MainContent.tsx
-import React, { type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { useTheme } from '../../context/ThemeContext';
 import { themes } from '../../themes';

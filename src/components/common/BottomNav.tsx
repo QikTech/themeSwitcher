@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { FaHome, FaInfoCircle, FaEnvelope } from 'react-icons/fa';
