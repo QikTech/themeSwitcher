@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MainContent from '../components/common/MainContent';
 import Button from '../components/common/Button';

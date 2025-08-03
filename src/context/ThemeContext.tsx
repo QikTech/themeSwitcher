@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext, type ReactNode } from 'react';
+import React, { createContext, useState, useEffect, useContext, type ReactNode } from 'react';
 import { type DefaultTheme, ThemeProvider as StyledThemeProvider } from 'styled-components';
 import {  themes, type ThemeName } from '../themes';
 import { GlobalStyles } from '../styles/GlobalStyles';
