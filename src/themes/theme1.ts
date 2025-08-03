@@ -4,13 +4,14 @@ export const theme1: DefaultTheme = {
   colors: {
     background: '#f0f2f5',
     text: '#333',
-    primary: '#007bff',
+    primary: '#290909ff',
     secondary: '#6c757d',
     border: '#ddd',
   },
   fonts: {
-    main: 'Arial, sans-serif',
-    heading: 'Arial, sans-serif',
+    // Add Calibri as the primary font
+    main: 'Calibri, sans-serif',
+    heading: 'Calibri, sans-serif',
     size: {
       base: '16px',
       h1: '2.5em',
@@ -29,7 +30,7 @@ export const theme1: DefaultTheme = {
   },
   components: {
     button: {
-      padding: '10px 20px',
+      padding: '10px 30px',
       borderRadius: '5px',
     },
   },

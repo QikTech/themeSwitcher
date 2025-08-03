@@ -70,7 +70,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <MainContent
+    <div style={{ marginTop: '1rem' }} >
+    <MainContent 
       title="Welcome to Our Theme Switcher App!"
       paragraph="This is a simple demo page to showcase the different themes. Use the dropdown in the header to see the changes in layout, colors, and fonts."
     >
@@ -93,6 +94,7 @@ const HomePage = () => {
         </Button>
       </div>
     </MainContent>
+    </div>
   );
 };
 

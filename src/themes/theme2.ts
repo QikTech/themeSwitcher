@@ -4,13 +4,13 @@ export const theme2: DefaultTheme = {
   colors: {
     background: '#121212',
     text: '#e0e0e0',
-    primary: '#bb86fc',
+    primary: '#402463ff',
     secondary: '#03dac6',
     border: '#444',
   },
   fonts: {
-    main: 'Georgia, serif',
-    heading: 'Georgia, serif',
+    main: 'Roboto, sans-serif',
+    heading: 'Roboto, sans-serif',
     size: {
       base: '18px',
       h1: '3em',

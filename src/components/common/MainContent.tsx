@@ -10,7 +10,7 @@ const ContentWrapper = styled.main<{ layoutType: string }>`
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  min-height: calc(100vh - ${({ theme }) => theme.layout.headerHeight} - 2rem);
+  min-height: calc(100vh - ${({ theme }) => theme.layout.headerHeight} - 1rem);
   
   /* Mobile styles */
   padding: 1rem;
