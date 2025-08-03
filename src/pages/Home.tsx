@@ -10,18 +10,34 @@ import { themes } from '../themes';
 const GridContainer = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.spacing.gap};
+  grid-template-columns: 1fr; /* Default to one column for mobile */
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 
   ${({ theme }) => theme.layout.type === 'card-grid' && `
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     padding: ${theme.spacing.padding};
     background-color: ${theme.colors.secondary};
     border-radius: 10px;
   `}
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
 `;
+
+// const GridContainer = styled.div`
+//   display: grid;
+//   gap: ${({ theme }) => theme.spacing.gap};
+
+//   ${({ theme }) => theme.layout.type === 'card-grid' && `
+//     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+//     padding: ${theme.spacing.padding};
+//     background-color: ${theme.colors.secondary};
+//     border-radius: 10px;
+//   `}
+
+//   @media (max-width: 768px) {
+//     grid-template-columns: 1fr;
+//   }
+// `;
 
 const ListContainer = styled.ul`
   list-style: none;
