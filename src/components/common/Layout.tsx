@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { Outlet, Link } from 'react-router-dom';
 import Header from './Header';
