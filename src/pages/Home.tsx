@@ -23,22 +23,6 @@ const GridContainer = styled.div`
   `}
 `;
 
-// const GridContainer = styled.div`
-//   display: grid;
-//   gap: ${({ theme }) => theme.spacing.gap};
-
-//   ${({ theme }) => theme.layout.type === 'card-grid' && `
-//     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-//     padding: ${theme.spacing.padding};
-//     background-color: ${theme.colors.secondary};
-//     border-radius: 10px;
-//   `}
-
-//   @media (max-width: 768px) {
-//     grid-template-columns: 1fr;
-//   }
-// `;
-
 const ListContainer = styled.ul`
   list-style: none;
   padding: 0;
@@ -70,7 +54,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div style={{ marginTop: '1rem' }} >
+    <div style={{ marginTop: '1.4rem' }} >
     <MainContent 
       title="Welcome to Our Theme Switcher App!"
       paragraph="This is a simple demo page to showcase the different themes. Use the dropdown in the header to see the changes in layout, colors, and fonts."
@@ -89,8 +73,8 @@ const HomePage = () => {
         </ListContainer>
       )}
       <div style={{ marginTop: '2rem' }}>
-        <Button onClick={() => alert('Button clicked!')}>
-          Click Me
+        <Button onClick={() => window.open('https://hipster-inc.ai', '_blank')}>
+          Visit Us
         </Button>
       </div>
     </MainContent>

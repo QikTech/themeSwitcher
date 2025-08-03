@@ -1,14 +1,10 @@
-// src/components/common/Layout.tsx
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import Header from './Header';
-import BottomNav from './BottomNav'; // Import the new component
+import BottomNav from './BottomNav';
 import { useTheme } from '../../context/ThemeContext';
 import { themes } from '../../themes';
-import { Link } from 'react-router-dom';
-
-
 
 const AppContainer = styled.div<{ layoutType: string }>`
   min-height: 100vh;
@@ -19,41 +15,27 @@ const AppContainer = styled.div<{ layoutType: string }>`
 
 const ContentWrapper = styled.div<{ layoutType: string }>`
   flex-grow: 1;
-  padding-top: ${({ theme }) => theme.layout.headerHeight};
-  padding: 1rem;
   
-  /* Add padding for the bottom nav on mobile */
+  /* Default mobile padding */
+  padding: 1rem;
+  padding-top: ${({ theme }) => theme.layout.headerHeight};
   padding-bottom: 70px; 
-
+  
   @media (min-width: 768px) {
-    padding: ${({ theme }) => theme.spacing.padding};
-    padding-bottom: ${({ theme }) => theme.spacing.padding}; // Revert to desktop padding
+    /* Default desktop padding */
+    padding: 2rem;
+    padding-top: ${({ theme }) => theme.layout.headerHeight};
+    padding-bottom: 2rem;
+    
     ${({ layoutType, theme }) => layoutType === 'sidebar' && css`
       margin-left: ${theme.layout.sidebarWidth};
-      padding-top: 0;
-      padding-left: 20px;
-      padding-right: 20px;
+      /* Override padding for sidebar layout */
+      padding-top: 0rem;
+      padding-left: 4rem;
+      padding-right: 2rem;
     `}
   }
 `;
-
-
-
-// const ContentWrapper = styled.div<{ layoutType: string }>`
-//   flex-grow: 1;
-//   padding-top: ${({ theme }) => theme.layout.headerHeight};
-//   padding: 1rem;
-
-//   @media (min-width: 768px) {
-//     padding: ${({ theme }) => theme.spacing.padding};
-//     ${({ layoutType, theme }) => layoutType === 'sidebar' && css`
-//       margin-left: ${theme.layout.sidebarWidth};
-//       padding-top: 0;
-//       padding-left: 20px;
-//       padding-right: 20px;
-//     `}
-//   }
-// `;
 
 const Sidebar = styled.div`
   width: ${({ theme }) => theme.layout.sidebarWidth};
@@ -67,20 +49,26 @@ const Sidebar = styled.div`
   overflow-y: auto;
   transition: all 0.3s ease-in-out;
   z-index: 1000;
-  display: none; /* Hide sidebar by default */
+  display: none;
   flex-direction: column;
   align-items: flex-start;
 
   @media (min-width: 768px) {
-    display: flex; /* Show sidebar on desktop */
+    display: flex;
   }
+`;
+
+const SidebarHeader = styled.h2`
+  color: white;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-family: ${({ theme }) => theme.fonts.heading};
 `;
 
 const SidebarNav = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 5rem;
   width: 100%;
 `;
 
@@ -96,28 +84,6 @@ const SidebarLink = styled(Link)`
   }
 `;
 
-// const Layout = () => {
-//   const { themeName } = useTheme();
-
-//   return (
-//     <AppContainer layoutType={themes[themeName].layout.type}>
-//       <Header />
-//       {themes[themeName].layout.type === 'sidebar' && (
-//         <Sidebar>
-//           <SidebarNav>
-//             <SidebarLink to="/">Home</SidebarLink>
-//             <SidebarLink to="/about">About</SidebarLink>
-//             <SidebarLink to="/contact">Contact</SidebarLink>
-//           </SidebarNav>
-//         </Sidebar>
-//       )}
-//       <ContentWrapper layoutType={themes[themeName].layout.type}>
-//         <Outlet />
-//       </ContentWrapper>
-//     </AppContainer>
-//   );
-// };
-
 const Layout = () => {
   const { themeName } = useTheme();
 
@@ -125,7 +91,8 @@ const Layout = () => {
     <AppContainer layoutType={themes[themeName].layout.type}>
       <Header />
       {themes[themeName].layout.type === 'sidebar' && (
-      <Sidebar>
+        <Sidebar>
+          <SidebarHeader>ThemeApp</SidebarHeader>
           <SidebarNav>
             <SidebarLink to="/">Home</SidebarLink>
             <SidebarLink to="/about">About</SidebarLink>
@@ -144,33 +111,41 @@ const Layout = () => {
 export default Layout;
 
 // import React from 'react';
-// import styled from 'styled-components';
-// import { Link, Outlet } from 'react-router-dom';
+// import styled, { css } from 'styled-components';
+// import { Outlet } from 'react-router-dom';
 // import Header from './Header';
+// import BottomNav from './BottomNav'; // Import the new component
 // import { useTheme } from '../../context/ThemeContext';
 // import { themes } from '../../themes';
+// import { Link } from 'react-router-dom';
+
+
 
 // const AppContainer = styled.div<{ layoutType: string }>`
 //   min-height: 100vh;
 //   display: flex;
 //   flex-direction: column;
-//   transition: all 0.3s ease-in-out;
-
-//   ${({ layoutType }) => layoutType === 'sidebar' && `
-//     flex-direction: row;
-//   `}
+//   transition: all 0.8s ease-in-out;
 // `;
 
 // const ContentWrapper = styled.div<{ layoutType: string }>`
 //   flex-grow: 1;
 //   padding-top: ${({ theme }) => theme.layout.headerHeight};
+//   padding: 1rem;
   
-//   ${({ layoutType, theme }) => layoutType === 'sidebar' && `
-//     margin-left: ${theme.layout.sidebarWidth};
-//     padding-top: 0;
-//     padding-left: 20px;
-//     padding-right: 20px;
-//   `}
+//   /* Add padding for the bottom nav on mobile */
+//   padding-bottom: 70px; 
+
+//   @media (min-width: 768px) {
+//     padding: ${({ theme }) => theme.spacing.padding};
+//     padding-bottom: ${({ theme }) => theme.spacing.padding}; // Revert to desktop padding
+//     ${({ layoutType, theme }) => layoutType === 'sidebar' && css`
+//       margin-left: ${theme.layout.sidebarWidth};
+//       padding-top: 0;
+//       padding-left: 20px;
+//       padding-right: 20px;
+//     `}
+//   }
 // `;
 
 // const Sidebar = styled.div`
@@ -183,11 +158,15 @@ export default Layout;
 //   left: 0;
 //   bottom: 0;
 //   overflow-y: auto;
-//   transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+//   transition: all 0.3s ease-in-out;
 //   z-index: 1000;
-//   display: flex;
+//   display: none; /* Hide sidebar by default */
 //   flex-direction: column;
 //   align-items: flex-start;
+
+//   @media (min-width: 768px) {
+//     display: flex; /* Show sidebar on desktop */
+//   }
 // `;
 
 // const SidebarNav = styled.nav`
@@ -209,7 +188,6 @@ export default Layout;
 //     background-color: rgba(255, 255, 255, 0.1);
 //   }
 // `;
-
 // const Layout = () => {
 //   const { themeName } = useTheme();
 
@@ -217,7 +195,7 @@ export default Layout;
 //     <AppContainer layoutType={themes[themeName].layout.type}>
 //       <Header />
 //       {themes[themeName].layout.type === 'sidebar' && (
-//         <Sidebar>
+//       <Sidebar>
 //           <SidebarNav>
 //             <SidebarLink to="/">Home</SidebarLink>
 //             <SidebarLink to="/about">About</SidebarLink>
@@ -228,6 +206,7 @@ export default Layout;
 //       <ContentWrapper layoutType={themes[themeName].layout.type}>
 //         <Outlet />
 //       </ContentWrapper>
+//       <BottomNav />
 //     </AppContainer>
 //   );
 // };

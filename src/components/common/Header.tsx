@@ -1,8 +1,7 @@
-// src/components/common/Header.tsx
 import React from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../../context/ThemeContext';
-import type { ThemeName } from '../../themes';
+import { type ThemeName, themes } from '../../themes'; // Import themes
 import { Link } from 'react-router-dom';
 
 const HeaderWrapper = styled.header`
@@ -16,13 +15,13 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem; /* Adjust padding for mobile */
+  padding: 0 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 100;
   transition: all 0.3s ease-in-out;
 
   @media (min-width: 768px) {
-    padding: ${({ theme }) => theme.spacing.container}; /* Restore desktop padding */
+    padding: ${({ theme }) => theme.spacing.container};
   }
 `;
 
@@ -35,11 +34,11 @@ const Logo = styled(Link)`
 `;
 
 const NavLinks = styled.nav`
-  display: none; /* Hide on mobile by default */
+  display: none;
   gap: 1rem;
 
   @media (min-width: 768px) {
-    display: flex; /* Show on desktop */
+    display: flex;
   }
 `;
 
@@ -53,7 +52,7 @@ const NavLink = styled(Link)`
 `;
 
 const ThemeSwitcher = styled.select`
-  padding: 8px 12px;
+  padding: 8px 30px 8px 18px;
   border-radius: 5px;
   border: none;
   background-color: rgba(255, 255, 255, 0.2);
@@ -74,14 +73,19 @@ const Header = () => {
     setThemeName(e.target.value as ThemeName);
   };
 
+  // Conditionally show navigation links based on the theme
+  const showNavLinks = themes[themeName].layout.type !== 'sidebar';
+
   return (
     <HeaderWrapper>
       <Logo to="/">ThemeApp</Logo>
-      <NavLinks>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
-      </NavLinks>
+      {showNavLinks && (
+        <NavLinks>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+        </NavLinks>
+      )}
       <ThemeSwitcher onChange={handleThemeChange} value={themeName}>
         <option value="theme1">Theme 1</option>
         <option value="theme2">Theme 2</option>
@@ -92,7 +96,6 @@ const Header = () => {
 };
 
 export default Header;
-
 // import React from 'react';
 // import styled from 'styled-components';
 // import { useTheme } from '../../context/ThemeContext';
@@ -110,10 +113,14 @@ export default Header;
 //   display: flex;
 //   justify-content: space-between;
 //   align-items: center;
-//   padding: ${({ theme }) => theme.spacing.container};
+//   padding: 0 1rem; /* Adjust padding for mobile */
 //   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 //   z-index: 100;
 //   transition: all 0.3s ease-in-out;
+
+//   @media (min-width: 768px) {
+//     padding: ${({ theme }) => theme.spacing.container}; /* Restore desktop padding */
+//   }
 // `;
 
 // const Logo = styled(Link)`
@@ -125,8 +132,12 @@ export default Header;
 // `;
 
 // const NavLinks = styled.nav`
-//   display: flex;
+//   display: none; /* Hide on mobile by default */
 //   gap: 1rem;
+
+//   @media (min-width: 768px) {
+//     display: flex; /* Show on desktop */
+//   }
 // `;
 
 // const NavLink = styled(Link)`
@@ -139,7 +150,7 @@ export default Header;
 // `;
 
 // const ThemeSwitcher = styled.select`
-//   padding: 8px 12px;
+//   padding: 8px 30px 8px 18px;
 //   border-radius: 5px;
 //   border: none;
 //   background-color: rgba(255, 255, 255, 0.2);
@@ -162,16 +173,16 @@ export default Header;
 
 //   return (
 //     <HeaderWrapper>
-//       <Logo to="/">ThemeApp</Logo>
+//       <Logo to="/">Hipster.INC</Logo>
 //       <NavLinks>
 //         <NavLink to="/">Home</NavLink>
 //         <NavLink to="/about">About</NavLink>
 //         <NavLink to="/contact">Contact</NavLink>
 //       </NavLinks>
 //       <ThemeSwitcher onChange={handleThemeChange} value={themeName}>
-//         <option value="theme1">Theme 1</option>
-//         <option value="theme2">Theme 2</option>
-//         <option value="theme3">Theme 3</option>
+//         <option value="theme1">Light Mode</option>
+//         <option value="theme2">Dark Mode</option>
+//         <option value="theme3">Funk Mode</option>
 //       </ThemeSwitcher>
 //     </HeaderWrapper>
 //   );

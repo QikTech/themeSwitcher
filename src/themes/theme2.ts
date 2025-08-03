@@ -4,8 +4,8 @@ export const theme2: DefaultTheme = {
   colors: {
     background: '#121212',
     text: '#e0e0e0',
-    primary: '#402463ff',
-    secondary: '#03dac6',
+    primary: '#14312fff',
+    secondary: '#14312fff',
     border: '#444',
   },
   fonts: {

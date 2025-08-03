@@ -1,5 +1,3 @@
-// src/themes/theme3.ts
-// src/themes/theme3.ts
 import type { DefaultTheme } from 'styled-components';
 
 export const theme3: DefaultTheme = {
@@ -12,8 +10,8 @@ export const theme3: DefaultTheme = {
   },
   fonts: {
     // Use Poppins for the main font, Pacifico for headings
-    main: 'Poppins, sans-serif',
-    heading: 'Poppins, cursive',
+     main: 'Calibri, sans-serif',
+    heading: 'Calibri, sans-serif',
     size: {
       base: '17px',
       h1: '3.2em',
